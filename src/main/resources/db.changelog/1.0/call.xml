@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="call" author="arno">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="call"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="call">
+
+            <column name="id"
+                    type="NUMERIC(19,0)"
+                    autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="user_id" type="NUMERIC(19,0)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_call_user"
+                             references="user(id)"
+                             deleteCascade="true"/>
+            </column>
+
+            <column name="edit_card_date" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="reason" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bcc" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="firstname" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="middlename" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lastname" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="sex" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="residence" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="phone_number" type="NUMERIC(19,0)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
